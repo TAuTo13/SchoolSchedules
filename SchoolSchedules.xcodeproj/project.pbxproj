@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */; };
 		F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */; };
 		F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA092977977700EE60A6 /* ContentView.swift */; };
 		F6AEEA0C2977977800EE60A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6AEEA0B2977977800EE60A6 /* Assets.xcassets */; };
@@ -14,6 +15,16 @@
 		F6AEEA192977977800EE60A6 /* SchoolSchedulesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA182977977800EE60A6 /* SchoolSchedulesTests.swift */; };
 		F6AEEA232977977800EE60A6 /* SchoolSchedulesUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA222977977800EE60A6 /* SchoolSchedulesUITests.swift */; };
 		F6AEEA252977977800EE60A6 /* SchoolSchedulesUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA242977977800EE60A6 /* SchoolSchedulesUITestsLaunchTests.swift */; };
+		F6AEEA33297798B000EE60A6 /* SchoolTimeTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA32297798B000EE60A6 /* SchoolTimeTable.swift */; };
+		F6AEEA3529782B6000EE60A6 /* ClassCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA3429782B6000EE60A6 /* ClassCard.swift */; };
+		F6B0146729A228B800C95438 /* AppendButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6B0146629A228B800C95438 /* AppendButton.swift */; };
+		F6BC707029869D2F00423614 /* DateException.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC706F29869D2F00423614 /* DateException.swift */; };
+		F6BC707329869E0000423614 /* DateStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC707229869E0000423614 /* DateStruct.swift */; };
+		F6BC70752986B37B00423614 /* WeekStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC70742986B37B00423614 /* WeekStruct.swift */; };
+		F6BC7077299256D500423614 /* NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC7076299256D500423614 /* NewSubject.swift */; };
+		F6BC707E299775A100423614 /* ClassSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC707D299775A100423614 /* ClassSpace.swift */; };
+		F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC941E29860E4300008BAE /* SubjectItem.swift */; };
+		F6BC942529866ED300008BAE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC942429866ED300008BAE /* DateHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +45,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.release.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.release.xcconfig"; sourceTree = "<group>"; };
 		F6AEEA042977977700EE60A6 /* SchoolSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesApp.swift; sourceTree = "<group>"; };
 		F6AEEA092977977700EE60A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -44,6 +57,17 @@
 		F6AEEA1E2977977800EE60A6 /* SchoolSchedulesUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SchoolSchedulesUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AEEA222977977800EE60A6 /* SchoolSchedulesUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesUITests.swift; sourceTree = "<group>"; };
 		F6AEEA242977977800EE60A6 /* SchoolSchedulesUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		F6AEEA32297798B000EE60A6 /* SchoolTimeTable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolTimeTable.swift; sourceTree = "<group>"; };
+		F6AEEA3429782B6000EE60A6 /* ClassCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassCard.swift; sourceTree = "<group>"; };
+		F6B0146629A228B800C95438 /* AppendButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppendButton.swift; sourceTree = "<group>"; };
+		F6BC706F29869D2F00423614 /* DateException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateException.swift; sourceTree = "<group>"; };
+		F6BC707229869E0000423614 /* DateStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStruct.swift; sourceTree = "<group>"; };
+		F6BC70742986B37B00423614 /* WeekStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStruct.swift; sourceTree = "<group>"; };
+		F6BC7076299256D500423614 /* NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubject.swift; sourceTree = "<group>"; };
+		F6BC707D299775A100423614 /* ClassSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSpace.swift; sourceTree = "<group>"; };
+		F6BC941E29860E4300008BAE /* SubjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectItem.swift; sourceTree = "<group>"; };
+		F6BC942429866ED300008BAE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.debug.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +75,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -71,6 +96,31 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		27F32EA9A16D9D7E3B033D3A /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */,
+				70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
+		E734F89930187F122027AD8B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F60B1F06297D0FB100CEB492 /* DataBase */ = {
+			isa = PBXGroup;
+			children = (
+				F6BC941E29860E4300008BAE /* SubjectItem.swift */,
+			);
+			path = DataBase;
+			sourceTree = "<group>";
+		};
 		F6AEE9FB2977977700EE60A6 = {
 			isa = PBXGroup;
 			children = (
@@ -78,6 +128,8 @@
 				F6AEEA172977977800EE60A6 /* SchoolSchedulesTests */,
 				F6AEEA212977977800EE60A6 /* SchoolSchedulesUITests */,
 				F6AEEA052977977700EE60A6 /* Products */,
+				27F32EA9A16D9D7E3B033D3A /* Pods */,
+				E734F89930187F122027AD8B /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -94,10 +146,15 @@
 		F6AEEA062977977700EE60A6 /* SchoolSchedules */ = {
 			isa = PBXGroup;
 			children = (
+				F6BC707129869DE600423614 /* Models */,
+				F6BC706E29869D1D00423614 /* Exceptions */,
+				F60B1F06297D0FB100CEB492 /* DataBase */,
+				F6AEEA312977989200EE60A6 /* Views */,
 				F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */,
 				F6AEEA092977977700EE60A6 /* ContentView.swift */,
 				F6AEEA0B2977977800EE60A6 /* Assets.xcassets */,
 				F6AEEA0D2977977800EE60A6 /* Preview Content */,
+				F6BC942429866ED300008BAE /* DateHelper.swift */,
 			);
 			path = SchoolSchedules;
 			sourceTree = "<group>";
@@ -127,6 +184,43 @@
 			path = SchoolSchedulesUITests;
 			sourceTree = "<group>";
 		};
+		F6AEEA312977989200EE60A6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F6B0146529A2287600C95438 /* Parts */,
+				F6AEEA32297798B000EE60A6 /* SchoolTimeTable.swift */,
+				F6BC7076299256D500423614 /* NewSubject.swift */,
+				F6BC707D299775A100423614 /* ClassSpace.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F6B0146529A2287600C95438 /* Parts */ = {
+			isa = PBXGroup;
+			children = (
+				F6AEEA3429782B6000EE60A6 /* ClassCard.swift */,
+				F6B0146629A228B800C95438 /* AppendButton.swift */,
+			);
+			path = Parts;
+			sourceTree = "<group>";
+		};
+		F6BC706E29869D1D00423614 /* Exceptions */ = {
+			isa = PBXGroup;
+			children = (
+				F6BC706F29869D2F00423614 /* DateException.swift */,
+			);
+			path = Exceptions;
+			sourceTree = "<group>";
+		};
+		F6BC707129869DE600423614 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F6BC707229869E0000423614 /* DateStruct.swift */,
+				F6BC70742986B37B00423614 /* WeekStruct.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -134,9 +228,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6AEEA282977977800EE60A6 /* Build configuration list for PBXNativeTarget "SchoolSchedules" */;
 			buildPhases = (
+				71112FF68CD9232FAB50457E /* [CP] Check Pods Manifest.lock */,
 				F6AEEA002977977700EE60A6 /* Sources */,
 				F6AEEA012977977700EE60A6 /* Frameworks */,
 				F6AEEA022977977700EE60A6 /* Resources */,
+				4BD864E6011442EEE3FD61CE /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -252,13 +348,65 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4BD864E6011442EEE3FD61CE /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		71112FF68CD9232FAB50457E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SchoolSchedules-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F6AEEA002977977700EE60A6 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */,
+				F6BC707329869E0000423614 /* DateStruct.swift in Sources */,
+				F6BC70752986B37B00423614 /* WeekStruct.swift in Sources */,
 				F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */,
+				F6BC707E299775A100423614 /* ClassSpace.swift in Sources */,
+				F6BC7077299256D500423614 /* NewSubject.swift in Sources */,
+				F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */,
+				F6BC942529866ED300008BAE /* DateHelper.swift in Sources */,
+				F6BC707029869D2F00423614 /* DateException.swift in Sources */,
+				F6AEEA3529782B6000EE60A6 /* ClassCard.swift in Sources */,
+				F6B0146729A228B800C95438 /* AppendButton.swift in Sources */,
+				F6AEEA33297798B000EE60A6 /* SchoolTimeTable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +559,7 @@
 		};
 		F6AEEA292977977800EE60A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -418,6 +567,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SchoolSchedules/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Realm/core\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -439,6 +593,7 @@
 		};
 		F6AEEA2A2977977800EE60A6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -446,6 +601,11 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"SchoolSchedules/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"${PODS_ROOT}/Realm/core\"",
+					"\"$(DEVELOPER_FRAMEWORKS_DIR)\"",
+				);
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
