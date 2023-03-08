@@ -22,8 +22,15 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     //1~5(Mon.~Fri)((Sat.))
     @Persisted var day: Int
     
+    //color hex code (String)
+    @Persisted var color: String
+    
     //1~6 time
     @Persisted var time: Int
     
-    @Persisted var memo: String?
+    @Persisted var memo: String
+    
+//    @Persisted(originProperty: "subjects") var term: LinkingObjects<Term>
+    
+    @Persisted var term: Term? = nil
 }

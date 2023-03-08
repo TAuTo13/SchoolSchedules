@@ -33,6 +33,7 @@ struct ClassCard_Previews: PreviewProvider {
                                      "teach": "Mr.Kitazaki",
                                      "weeks": 7,
                                      "day": 3,
+                                            "color":Color.blue.toHex()!,
                                      "time": 2,
                                      "memo": "memo"])
     static var previews: some View {
