@@ -28,60 +28,6 @@ struct SchoolTimeTable: View {
                                      "time": 2,
                                      "meme": "memo"])
     
-    func UIYearMonthHeaderView(_ drawableSpaceHeight: CGFloat, _ drawableSpaceWidth: CGFloat) -> some View{
-        let view = HStack (spacing: (drawableSpaceWidth / CGFloat(8.0))){
-            Button(){
-                do{
-                    try week.decrement()
-                }catch{
-                    print("exception")
-                }
-            } label: {
-                Text("<Prev")
-            }
-            Text(verbatim: "\(week.month) \(week.year)")
-                .font(.title)
-            Button(){
-                do{
-                    try week.increment()
-                }catch{
-                    print("exception")
-                }
-            } label:{
-                Text("Next>")
-                
-            }
-        }
-        
-        return view
-    }
-    
-    func UIWeekDayHeaderView(_ drawableSpaceHeight: CGFloat, _ drawableSpaceWidth: CGFloat) -> some View{
-        let view =
-            HStack {
-                Rectangle()
-                    .frame(width:(drawableSpaceWidth) * (1 - headerSizeXRatio) - margin * 4,
-                           height: drawableSpaceHeight * headerSizeYRatio)
-                    .foregroundColor(.yellow)
-                ForEach(1..<6) { weekday_current in
-                    VStack{
-                        let date = try! DateHelper().getDayFromWeekOfYear(year: week.year, weekOfYear: week.weekOfYear, weekDay: weekday_current)
-                        //weekday
-                        Text(date.weekday)
-                        //day
-                        Text("\(date.day)")
-                            .font(.title2)
-                            .foregroundColor(date.isHoliday ? Color.red : Color.black)
-                    }
-                    .frame(width: (drawableSpaceWidth) * (headerSizeXRatio) * 0.25 - margin * 4,
-                           height: drawableSpaceHeight * headerSizeYRatio)
-                    .background(.blue)
-                }
-            }
-        
-        return view
-    }
-    
     func UICalenderView() -> some View{
         let sideMargin = margin * 2
         let headerDaysYRatio = 1 - headerYearYRatio
@@ -166,7 +112,8 @@ struct SchoolTimeTable: View {
                                     HStack(spacing: margin){
                                         ForEach(2..<7){weekday in
                                             VStack (spacing: margin){
-                                                ForEach(1..<7){ time in                    ClassCard(subjectItem: subject)
+                                                ForEach(1..<7){ time in
+                                                    ClassCard(subjectItem: subject)
                                                         .frame(width: daySpaceWidth,
                                                                height: timesHeight)
                                                         
@@ -185,6 +132,8 @@ struct SchoolTimeTable: View {
         
         return view
     }
+    
+    
     
     var body: some View {
         UICalenderView()

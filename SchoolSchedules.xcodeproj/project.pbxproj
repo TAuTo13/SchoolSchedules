@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */; };
+		F69A821C29B86ABF00D5AE19 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */; };
 		F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */; };
 		F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA092977977700EE60A6 /* ContentView.swift */; };
 		F6AEEA0C2977977800EE60A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6AEEA0B2977977800EE60A6 /* Assets.xcassets */; };
@@ -21,10 +22,15 @@
 		F6BC707029869D2F00423614 /* DateException.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC706F29869D2F00423614 /* DateException.swift */; };
 		F6BC707329869E0000423614 /* DateStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC707229869E0000423614 /* DateStruct.swift */; };
 		F6BC70752986B37B00423614 /* WeekStruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC70742986B37B00423614 /* WeekStruct.swift */; };
-		F6BC7077299256D500423614 /* NewSubject.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC7076299256D500423614 /* NewSubject.swift */; };
+		F6BC7077299256D500423614 /* NewSubjectView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC7076299256D500423614 /* NewSubjectView.swift */; };
 		F6BC707E299775A100423614 /* ClassSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC707D299775A100423614 /* ClassSpace.swift */; };
 		F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC941E29860E4300008BAE /* SubjectItem.swift */; };
 		F6BC942529866ED300008BAE /* DateHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6BC942429866ED300008BAE /* DateHelper.swift */; };
+		F6E7248F29A4795000C5A031 /* Term.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7248E29A4795000C5A031 /* Term.swift */; };
+		F6E7249329A47B5000C5A031 /* ScheduleItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7249229A47B5000C5A031 /* ScheduleItem.swift */; };
+		F6E7249529A891FE00C5A031 /* TermSegmentEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7249429A891FE00C5A031 /* TermSegmentEnum.swift */; };
+		F6E7249A29B565B000C5A031 /* AddTermView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7249929B565B000C5A031 /* AddTermView.swift */; };
+		F6E7249C29B59ACA00C5A031 /* TermListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7249B29B59AC900C5A031 /* TermListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +53,7 @@
 /* Begin PBXFileReference section */
 		360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.release.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.release.xcconfig"; sourceTree = "<group>"; };
+		F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		F6AEEA042977977700EE60A6 /* SchoolSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesApp.swift; sourceTree = "<group>"; };
 		F6AEEA092977977700EE60A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,10 +70,15 @@
 		F6BC706F29869D2F00423614 /* DateException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateException.swift; sourceTree = "<group>"; };
 		F6BC707229869E0000423614 /* DateStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateStruct.swift; sourceTree = "<group>"; };
 		F6BC70742986B37B00423614 /* WeekStruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekStruct.swift; sourceTree = "<group>"; };
-		F6BC7076299256D500423614 /* NewSubject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubject.swift; sourceTree = "<group>"; };
+		F6BC7076299256D500423614 /* NewSubjectView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewSubjectView.swift; sourceTree = "<group>"; };
 		F6BC707D299775A100423614 /* ClassSpace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassSpace.swift; sourceTree = "<group>"; };
 		F6BC941E29860E4300008BAE /* SubjectItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubjectItem.swift; sourceTree = "<group>"; };
 		F6BC942429866ED300008BAE /* DateHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateHelper.swift; sourceTree = "<group>"; };
+		F6E7248E29A4795000C5A031 /* Term.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Term.swift; sourceTree = "<group>"; };
+		F6E7249229A47B5000C5A031 /* ScheduleItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleItem.swift; sourceTree = "<group>"; };
+		F6E7249429A891FE00C5A031 /* TermSegmentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSegmentEnum.swift; sourceTree = "<group>"; };
+		F6E7249929B565B000C5A031 /* AddTermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTermView.swift; sourceTree = "<group>"; };
+		F6E7249B29B59AC900C5A031 /* TermListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListView.swift; sourceTree = "<group>"; };
 		FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.debug.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -117,8 +129,18 @@
 			isa = PBXGroup;
 			children = (
 				F6BC941E29860E4300008BAE /* SubjectItem.swift */,
+				F6E7248E29A4795000C5A031 /* Term.swift */,
+				F6E7249229A47B5000C5A031 /* ScheduleItem.swift */,
 			);
 			path = DataBase;
+			sourceTree = "<group>";
+		};
+		F69A821A29B86AAC00D5AE19 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		F6AEE9FB2977977700EE60A6 = {
@@ -146,6 +168,7 @@
 		F6AEEA062977977700EE60A6 /* SchoolSchedules */ = {
 			isa = PBXGroup;
 			children = (
+				F69A821A29B86AAC00D5AE19 /* Extensions */,
 				F6BC707129869DE600423614 /* Models */,
 				F6BC706E29869D1D00423614 /* Exceptions */,
 				F60B1F06297D0FB100CEB492 /* DataBase */,
@@ -187,9 +210,9 @@
 		F6AEEA312977989200EE60A6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				F6E7249629B55FE100C5A031 /* AppendSheet */,
 				F6B0146529A2287600C95438 /* Parts */,
 				F6AEEA32297798B000EE60A6 /* SchoolTimeTable.swift */,
-				F6BC7076299256D500423614 /* NewSubject.swift */,
 				F6BC707D299775A100423614 /* ClassSpace.swift */,
 			);
 			path = Views;
@@ -217,8 +240,19 @@
 			children = (
 				F6BC707229869E0000423614 /* DateStruct.swift */,
 				F6BC70742986B37B00423614 /* WeekStruct.swift */,
+				F6E7249429A891FE00C5A031 /* TermSegmentEnum.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		F6E7249629B55FE100C5A031 /* AppendSheet */ = {
+			isa = PBXGroup;
+			children = (
+				F6BC7076299256D500423614 /* NewSubjectView.swift */,
+				F6E7249929B565B000C5A031 /* AddTermView.swift */,
+				F6E7249B29B59AC900C5A031 /* TermListView.swift */,
+			);
+			path = AppendSheet;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -395,15 +429,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F6E7249529A891FE00C5A031 /* TermSegmentEnum.swift in Sources */,
 				F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */,
 				F6BC707329869E0000423614 /* DateStruct.swift in Sources */,
 				F6BC70752986B37B00423614 /* WeekStruct.swift in Sources */,
+				F6E7249329A47B5000C5A031 /* ScheduleItem.swift in Sources */,
+				F69A821C29B86ABF00D5AE19 /* ColorExtensions.swift in Sources */,
+				F6E7248F29A4795000C5A031 /* Term.swift in Sources */,
 				F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */,
 				F6BC707E299775A100423614 /* ClassSpace.swift in Sources */,
-				F6BC7077299256D500423614 /* NewSubject.swift in Sources */,
+				F6BC7077299256D500423614 /* NewSubjectView.swift in Sources */,
 				F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */,
 				F6BC942529866ED300008BAE /* DateHelper.swift in Sources */,
+				F6E7249A29B565B000C5A031 /* AddTermView.swift in Sources */,
 				F6BC707029869D2F00423614 /* DateException.swift in Sources */,
+				F6E7249C29B59ACA00C5A031 /* TermListView.swift in Sources */,
 				F6AEEA3529782B6000EE60A6 /* ClassCard.swift in Sources */,
 				F6B0146729A228B800C95438 /* AppendButton.swift in Sources */,
 				F6AEEA33297798B000EE60A6 /* SchoolTimeTable.swift in Sources */,
