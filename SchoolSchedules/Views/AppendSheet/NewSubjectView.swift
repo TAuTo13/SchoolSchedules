@@ -25,7 +25,6 @@ struct NewSubjectView: View {
     @State private var subjectName : String = ""
     @State private var room : String = ""
     @State private var teacher: String = ""
-    @State private var weeks: Int? = nil
     @State private var weekDay: Int? = nil
     @State private var time: Int? = nil
     @State private var term: Term? = nil
@@ -43,11 +42,6 @@ struct NewSubjectView: View {
                     TextField("Subject Name", text: $subjectName)
                     TextField("Room Number", text: $room)
                     TextField("Teacher Name", text: $teacher)
-                    
-                    Picker(selection: $weeks, label: Text("Weeks")){
-                        Text("SemiTerm(7 weeks)").tag(Optional(7))
-                        Text("FullTerm(14 weeks)").tag(Optional(14))
-                    }
                     
                     ColorPicker("Color", selection: $color)
                     
@@ -121,7 +115,6 @@ struct NewSubjectView: View {
             && !subjectName.isEmpty
             && room.range(of: roomPattern,options: .regularExpression) != nil
             && !teacher.isEmpty
-            && weeks != nil
             && weekDay != nil
             && time != nil
             && term != nil
@@ -157,7 +150,6 @@ struct NewSubjectView: View {
             let subject = SubjectItem(value:["name": subjectName,
                                              "room": room,
                                              "teach": teacher,
-                                             "weeks": weeks!,
                                              "color":color.toHex()!,
                                              "day": scheduleItem.weekDay,
                                              "time": scheduleItem.time,
@@ -169,15 +161,17 @@ struct NewSubjectView: View {
     }
     
     private func AddSchedulesFromSubject(_ subject: SubjectItem){
+        let weekdays = 7
         let term: Term = subject.term!
-        let weeks = subject.weeks
+        let weeks = subject.term!.subSegment == TermSubSegment.Full.rawValue ?
+            TermDefinition.FULL_TERM_WEEKS : TermDefinition.HALF_TERM_WEEKS
         
         var date = try! DateStruct(date: term.startDate)
         if subject.day > date.weekdayVal{
             let _ = date.addDays(value: subject.day - date.weekdayVal)
             while date.isHoliday { let _ = date.incrementWeek() }
         }else{
-            let _ = date.addDays(value: 7 - date.weekdayVal + subject.day)
+            let _ = date.addDays(value: weekdays - date.weekdayVal + subject.day)
             while date.isHoliday { let _ =  date.incrementWeek() }
         }
         

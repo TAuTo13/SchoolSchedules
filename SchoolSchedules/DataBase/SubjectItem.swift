@@ -17,8 +17,6 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     
     @Persisted var teach: String
     
-    @Persisted var weeks: Int
-    
     //1~5(Mon.~Fri)((Sat.))
     @Persisted var day: Int
     

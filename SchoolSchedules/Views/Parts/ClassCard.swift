@@ -11,24 +11,35 @@ import SwiftUI
 
 
 struct ClassCard: View {
-    let subjectItem: SubjectItem
+    public let subjectItem: SubjectItem?
+    
+    private var visible = true
+    
+    public init(subjectItem: SubjectItem?){
+        self.subjectItem = subjectItem
+    }
     
     var body: some View {
-        RoundedRectangle(cornerRadius: 10)
-        .fill(.blue)
-        .overlay(){
-            VStack{
-                    Text(subjectItem.name)
-                        .font(.title3)
-                    Text(subjectItem.room)
-                        .font(.caption)
-            }
+        if let subjectItem = subjectItem {
+            RoundedRectangle(cornerRadius: 10)
+                .fill(Color(hex: subjectItem.color))
+                .overlay(){
+                    VStack{
+                        Text(subjectItem.name)
+                            .font(.title3)
+                        Text(subjectItem.room)
+                            .font(.caption)
+                    }
+                }
+        }else{
+            Rectangle()
+                .hidden()
         }
     }
 }
 
 struct ClassCard_Previews: PreviewProvider {
-    static let subject = SubjectItem(value:["name": "Math",
+    static let subject: SubjectItem? = SubjectItem(value:["name": "Math",
                                      "room": "A-106",
                                      "teach": "Mr.Kitazaki",
                                      "weeks": 7,
