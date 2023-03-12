@@ -3,8 +3,11 @@
 
 ## 基本機能
 * 時間割の表示
+![MainView](Images/SchoolScheduleApp_MainView.png)
 * 講義情報の追加
+![AddSubjectView](Images/SchoolScheduleApp_AddSubjectView.png)
 * 講義の開設学期(Term)の追加
+![TermListView](Images/SchoolScheduleApp_TermsView.png)
 
 ## 現在の問題
 * 学期(Term)の削除が反映されない
