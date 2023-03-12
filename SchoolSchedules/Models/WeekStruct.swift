@@ -40,7 +40,7 @@ struct WeekStruct{
         self.month = calendar.shortMonthSymbols[cp.month! - 1]
     }
     
-    mutating func increment() throws {
+    public mutating func increment() throws {
         guard let date_optional = calendar.date(byAdding: .weekOfYear, value: 1, to: date)else{
             throw DateException.NotFoundException
         }
@@ -48,11 +48,21 @@ struct WeekStruct{
         update()
     }
     
-    mutating func decrement() throws {
-        guard let date_optional = calendar.date(byAdding: .weekOfYear, value: -1, to: date)else{
+    public mutating func decrement() throws {
+        guard let date_optional = calendar.date(byAdding: .weekOfYear, value: -1, to: date)
+        else {
             throw DateException.NotFoundException
         }
         date = date_optional
         update()
+    }
+    
+    public func getDayOfWeek(weekday: Int) throws -> Date {
+        guard let date = calendar.date(from: DateComponents(weekday: weekday, weekOfYear: weekOfYear, yearForWeekOfYear: year))
+        else {
+            throw DateException.NotFoundException
+        }
+        
+        return date
     }
 }

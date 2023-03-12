@@ -11,11 +11,9 @@ import RealmSwift
 final class ScheduleItem: Object, ObjectKeyIdentifiable{
     @Persisted(primaryKey: true) var id: ObjectId
     
-    @Persisted var subjectItem: SubjectItem? = nil
+    @Persisted var subjectItem: SubjectItem?
     
-//    @Persisted var term: RealmSwift.LinkingObjects<Term>
-    
-    @Persisted var term: Term? = nil
+    @Persisted var term: Term?
     
     @Persisted var date: Date
     

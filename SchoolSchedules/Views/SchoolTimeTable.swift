@@ -13,7 +13,9 @@ struct SchoolClass{
 }
 
 struct SchoolTimeTable: View {
-    @State var week : WeekStruct = DateHelper().getWeekNow()
+    @State private var week : WeekStruct = DateHelper().getWeekNow()
+    
+    @Environment(\.realm) private var realm: Realm
     
     private let margin:CGFloat = 5
     private let headerSizeXRatio = 0.9
@@ -113,7 +115,8 @@ struct SchoolTimeTable: View {
                                         ForEach(2..<7){weekday in
                                             VStack (spacing: margin){
                                                 ForEach(1..<7){ time in
-                                                    ClassCard(subjectItem: subject)
+                                                    let classView = try! SetSubjectSchedule(weekday: weekday, time: time)
+                                                    classView
                                                         .frame(width: daySpaceWidth,
                                                                height: timesHeight)
                                                         
@@ -133,7 +136,21 @@ struct SchoolTimeTable: View {
         return view
     }
     
-    
+    func SetSubjectSchedule(weekday: Int, time: Int) throws -> some View{
+        do{
+            let date: Date = try week.getDayOfWeek(weekday: weekday)
+            let schedules = realm.objects(ScheduleItem.self).where({$0.date == date && $0.time == time})
+            
+            if let schedule = schedules.first {
+                return ClassCard(subjectItem: schedule.subjectItem)
+            } else {
+                return ClassCard(subjectItem: nil)
+            }
+        }catch{
+            print(error)
+            throw DateException.NotFoundException
+        }
+    }
     
     var body: some View {
         UICalenderView()

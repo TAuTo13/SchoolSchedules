@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */; };
 		F69A821C29B86ABF00D5AE19 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */; };
+		F69A822029B9CAA000D5AE19 /* TermDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */; };
+		F69A822629BA250000D5AE19 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A822529BA250000D5AE19 /* Migrator.swift */; };
 		F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */; };
 		F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA092977977700EE60A6 /* ContentView.swift */; };
 		F6AEEA0C2977977800EE60A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6AEEA0B2977977800EE60A6 /* Assets.xcassets */; };
@@ -54,6 +56,8 @@
 		360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.release.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.release.xcconfig"; sourceTree = "<group>"; };
 		F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDefinition.swift; sourceTree = "<group>"; };
+		F69A822529BA250000D5AE19 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
 		F6AEEA042977977700EE60A6 /* SchoolSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesApp.swift; sourceTree = "<group>"; };
 		F6AEEA092977977700EE60A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -143,6 +147,23 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		F69A821E29B9CA6900D5AE19 /* Defines */ = {
+			isa = PBXGroup;
+			children = (
+				F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */,
+			);
+			path = Defines;
+			sourceTree = "<group>";
+		};
+		F69A822429BA24E800D5AE19 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				F6BC942429866ED300008BAE /* DateHelper.swift */,
+				F69A822529BA250000D5AE19 /* Migrator.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		F6AEE9FB2977977700EE60A6 = {
 			isa = PBXGroup;
 			children = (
@@ -168,6 +189,8 @@
 		F6AEEA062977977700EE60A6 /* SchoolSchedules */ = {
 			isa = PBXGroup;
 			children = (
+				F69A822429BA24E800D5AE19 /* Utils */,
+				F69A821E29B9CA6900D5AE19 /* Defines */,
 				F69A821A29B86AAC00D5AE19 /* Extensions */,
 				F6BC707129869DE600423614 /* Models */,
 				F6BC706E29869D1D00423614 /* Exceptions */,
@@ -177,7 +200,6 @@
 				F6AEEA092977977700EE60A6 /* ContentView.swift */,
 				F6AEEA0B2977977800EE60A6 /* Assets.xcassets */,
 				F6AEEA0D2977977800EE60A6 /* Preview Content */,
-				F6BC942429866ED300008BAE /* DateHelper.swift */,
 			);
 			path = SchoolSchedules;
 			sourceTree = "<group>";
@@ -439,11 +461,13 @@
 				F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */,
 				F6BC707E299775A100423614 /* ClassSpace.swift in Sources */,
 				F6BC7077299256D500423614 /* NewSubjectView.swift in Sources */,
+				F69A822029B9CAA000D5AE19 /* TermDefinition.swift in Sources */,
 				F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */,
 				F6BC942529866ED300008BAE /* DateHelper.swift in Sources */,
 				F6E7249A29B565B000C5A031 /* AddTermView.swift in Sources */,
 				F6BC707029869D2F00423614 /* DateException.swift in Sources */,
 				F6E7249C29B59ACA00C5A031 /* TermListView.swift in Sources */,
+				F69A822629BA250000D5AE19 /* Migrator.swift in Sources */,
 				F6AEEA3529782B6000EE60A6 /* ClassCard.swift in Sources */,
 				F6B0146729A228B800C95438 /* AppendButton.swift in Sources */,
 				F6AEEA33297798B000EE60A6 /* SchoolTimeTable.swift in Sources */,
@@ -517,6 +541,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEFINES_MODULE = YES;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
@@ -577,6 +602,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEFINES_MODULE = YES;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;

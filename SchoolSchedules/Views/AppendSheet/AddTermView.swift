@@ -11,9 +11,9 @@ import RealmSwift
 struct AddTermView: View {
     @Environment(\.dismiss) private var dismiss
     
-    private let current_year: Int = DateHelper().getYearNow()
+    @Environment(\.realm) private var realm: Realm
     
-    @ObservedResults(Term.self) private var termList
+    private let current_year: Int = DateHelper().getYearNow()
     
     private var itemToEdit: Term?
     
@@ -109,31 +109,27 @@ struct AddTermView: View {
     
     private func UpdateTerm() {
         if let itemToEdit = itemToEdit {
-            do{
-                let realm = try Realm()
-                guard let objToUpdate = realm.object(ofType: Term.self, forPrimaryKey: itemToEdit.id)
-                else { return }
-                try realm.write{
-                    objToUpdate.year = year
-                    objToUpdate.segment = termSegment.rawValue
-                    objToUpdate.subSegment = termSubSegment.rawValue
-                    objToUpdate.startDate = startDate
-                }
-            }catch{
-                print(error)
+            guard let objToUpdate = realm.object(ofType: Term.self, forPrimaryKey: itemToEdit.id)
+            else { return }
+            try! realm.write{
+                objToUpdate.year = year
+                objToUpdate.segment = termSegment.rawValue
+                objToUpdate.subSegment = termSubSegment.rawValue
+                objToUpdate.startDate = startDate
             }
         }
     }
     
     private func AddTerm(){
-        if termList.where({$0.year == year && $0.segment == termSegment.rawValue
+        if realm.objects(Term.self).where({$0.year == year && $0.segment == termSegment.rawValue
             && $0.subSegment == termSubSegment.rawValue}).count == 0{
             let term = Term(value: ["year": year,
                                     "segment": termSegment.rawValue,
                                     "subSegment": termSubSegment.rawValue,
                                     "startDate": startDate])
-            
-            $termList.append(term)
+            try! realm.write{
+                realm.add(term)
+            }
         }
     }
     

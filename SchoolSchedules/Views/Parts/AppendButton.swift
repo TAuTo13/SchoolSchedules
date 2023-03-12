@@ -6,9 +6,10 @@
 //
 
 import SwiftUI
+import RealmSwift
 
 struct AppendButton: View {
-    @State var isPresented = false
+    @State private var isPresented = false
     var body: some View {
         VStack {
             Spacer()

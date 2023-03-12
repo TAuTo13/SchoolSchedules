@@ -17,8 +17,6 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     
     @Persisted var teach: String
     
-    @Persisted var weeks: Int
-    
     //1~5(Mon.~Fri)((Sat.))
     @Persisted var day: Int
     
@@ -30,7 +28,5 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     
     @Persisted var memo: String
     
-//    @Persisted(originProperty: "subjects") var term: LinkingObjects<Term>
-    
-    @Persisted var term: Term? = nil
+    @Persisted var term: Term?
 }

@@ -13,7 +13,7 @@ struct TermListView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedResults(Term.self) var termList
+    @Environment(\.realm) private var realm: Realm
     
     @State private var selectedTerm: Term? = nil
     
@@ -23,7 +23,7 @@ struct TermListView: View {
     
     var body: some View {
         NavigationStack{
-            if let termList = termList{
+            if let termList = realm.objects(Term.self){
                 List(selection: $selectedTerm){
                     ForEach(termList, id: \.self){ t in
                         Text("\(t.year) \(t.segment) \(t.subSegment)")
@@ -79,18 +79,15 @@ struct TermListView: View {
     }
     
     private func deleteTerm(){
-        do{
-            let realm = try Realm()
-            let subjects = realm.objects(SubjectItem.self).where({$0.term.id == selectedTerm!.id})
+        let subjects = realm.objects(SubjectItem.self).where({$0.term.id == selectedTerm!.id})
 
-            if subjects.count == 0 {
-                $termList.remove(selectedTerm!)
-                
-                selectedTerm = nil
-                termSelected = false
+        if subjects.count == 0 {
+            try! realm.write{
+                realm.delete(selectedTerm!)
             }
-        }catch{
-            print(error)
+            
+            selectedTerm = nil
+            termSelected = false
         }
     }
 }
