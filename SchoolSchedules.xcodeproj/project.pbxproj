@@ -11,6 +11,9 @@
 		F69A821C29B86ABF00D5AE19 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */; };
 		F69A822029B9CAA000D5AE19 /* TermDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */; };
 		F69A822629BA250000D5AE19 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A822529BA250000D5AE19 /* Migrator.swift */; };
+		F69A823629BDD24900D5AE19 /* SchoolScheduleApp_AddSubjectView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823329BDD24800D5AE19 /* SchoolScheduleApp_AddSubjectView.png */; };
+		F69A823729BDD24900D5AE19 /* SchoolScheduleApp_MainView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823429BDD24900D5AE19 /* SchoolScheduleApp_MainView.png */; };
+		F69A823829BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823529BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png */; };
 		F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */; };
 		F6AEEA0A2977977700EE60A6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6AEEA092977977700EE60A6 /* ContentView.swift */; };
 		F6AEEA0C2977977800EE60A6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6AEEA0B2977977800EE60A6 /* Assets.xcassets */; };
@@ -58,6 +61,9 @@
 		F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDefinition.swift; sourceTree = "<group>"; };
 		F69A822529BA250000D5AE19 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		F69A823329BDD24800D5AE19 /* SchoolScheduleApp_AddSubjectView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_AddSubjectView.png; sourceTree = "<group>"; };
+		F69A823429BDD24900D5AE19 /* SchoolScheduleApp_MainView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_MainView.png; sourceTree = "<group>"; };
+		F69A823529BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_TermsView.png; sourceTree = "<group>"; };
 		F6AEEA042977977700EE60A6 /* SchoolSchedules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SchoolSchedules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6AEEA072977977700EE60A6 /* SchoolSchedulesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SchoolSchedulesApp.swift; sourceTree = "<group>"; };
 		F6AEEA092977977700EE60A6 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -164,9 +170,20 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
+		F69A823229BDD23100D5AE19 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F69A823329BDD24800D5AE19 /* SchoolScheduleApp_AddSubjectView.png */,
+				F69A823429BDD24900D5AE19 /* SchoolScheduleApp_MainView.png */,
+				F69A823529BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		F6AEE9FB2977977700EE60A6 = {
 			isa = PBXGroup;
 			children = (
+				F69A823229BDD23100D5AE19 /* Images */,
 				F6AEEA062977977700EE60A6 /* SchoolSchedules */,
 				F6AEEA172977977800EE60A6 /* SchoolSchedulesTests */,
 				F6AEEA212977977800EE60A6 /* SchoolSchedulesUITests */,
@@ -383,8 +400,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F69A823629BDD24900D5AE19 /* SchoolScheduleApp_AddSubjectView.png in Resources */,
 				F6AEEA0F2977977800EE60A6 /* Preview Assets.xcassets in Resources */,
+				F69A823729BDD24900D5AE19 /* SchoolScheduleApp_MainView.png in Resources */,
 				F6AEEA0C2977977800EE60A6 /* Assets.xcassets in Resources */,
+				F69A823829BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
