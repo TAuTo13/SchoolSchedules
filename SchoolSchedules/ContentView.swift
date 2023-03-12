@@ -9,7 +9,6 @@ import SwiftUI
 import RealmSwift
 
 struct ContentView: View {
-    @ObservedResults(Term.self) var terms
     var body: some View {
         SchoolTimeTable()
     }

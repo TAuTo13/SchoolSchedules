@@ -28,7 +28,5 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     
     @Persisted var memo: String
     
-//    @Persisted(originProperty: "subjects") var term: LinkingObjects<Term>
-    
-    @Persisted var term: Term? = nil
+    @Persisted var term: Term?
 }

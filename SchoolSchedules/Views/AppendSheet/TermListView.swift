@@ -13,7 +13,7 @@ struct TermListView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @ObservedResults(Term.self) var termList
+    @ObservedResults(Term.self) private var termList
     
     @State private var selectedTerm: Term? = nil
     

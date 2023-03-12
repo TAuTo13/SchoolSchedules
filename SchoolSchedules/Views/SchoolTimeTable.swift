@@ -13,7 +13,7 @@ struct SchoolClass{
 }
 
 struct SchoolTimeTable: View {
-    @State var week : WeekStruct = DateHelper().getWeekNow()
+    @State private var week : WeekStruct = DateHelper().getWeekNow()
     
     @ObservedResults(ScheduleItem.self) private var scheduleList
     
