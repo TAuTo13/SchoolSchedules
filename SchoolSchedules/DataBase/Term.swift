@@ -18,4 +18,10 @@ final class Term:Object,ObjectKeyIdentifiable{
     @Persisted var subSegment: String
     
     @Persisted var startDate: Date
+    
+    static func == (left: Term, right: Term) -> Bool{
+        return left.year == right.year &&
+        left.segment == right.segment &&
+        left.subSegment == right.subSegment
+    }
 }

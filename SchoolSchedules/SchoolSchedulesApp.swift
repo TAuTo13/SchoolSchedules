@@ -17,9 +17,9 @@ struct SchoolSchedulesApp: SwiftUI.App {
             let _ = UserDefaults.standard.set(false, forKey: "_UIConstraintBasedLayoutLogUnsatisfiable")
             let _ = print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!.path)
             
-//            let realm = try! Realm()
+            let realm = try! Realm()
             ContentView()
-//                .environment(\.realm, realm)
+                .environment(\.realm, realm)
         }
     }
 }

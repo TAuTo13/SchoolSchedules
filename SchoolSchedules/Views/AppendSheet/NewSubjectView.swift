@@ -16,16 +16,13 @@ struct ScheduleStock: Identifiable{
 
 struct NewSubjectView: View {
     @Environment(\.dismiss) private var dismiss
-    
-    //Realms
-    @ObservedResults(SubjectItem.self) private var subjectList
-    @ObservedResults(ScheduleItem.self) private var scheduleList
+    @Environment(\.realm) private var realm: Realm
     
     //for SubjectItems
     @State private var subjectName : String = ""
     @State private var room : String = ""
     @State private var teacher: String = ""
-    @State private var weekDay: Int = 1
+    @State private var weekDay: Int = 2
     @State private var time: Int = 1
     @State private var term: Term? = nil
     @State private var color: Color = Color.blue
@@ -108,11 +105,11 @@ struct NewSubjectView: View {
                     }
                     
                     Picker(selection: $weekDay, label: Text("WeekDay")){
-                        Text("Monday").tag(1)
-                        Text("Tuesday").tag(2)
-                        Text("Wednesday").tag(3)
-                        Text("Thrusday").tag(4)
-                        Text("Friday").tag(5)
+                        Text("Monday").tag(2)
+                        Text("Tuesday").tag(3)
+                        Text("Wednesday").tag(4)
+                        Text("Thrusday").tag(5)
+                        Text("Friday").tag(6)
                     }
                     
                     Picker(selection: $time, label: Text("Time")){
@@ -129,8 +126,7 @@ struct NewSubjectView: View {
                     } label:{
                         Text("Add")
                     }
-                    
-                    
+                    .disabled(!StockAppendable())
                 }
             }
         }
@@ -192,35 +188,40 @@ struct NewSubjectView: View {
         return false
     }
 
+    private func StockAppendable() -> Bool{
+        if stock.contains(where: {$0.weekDay == weekDay && $0.time == time})
+            || term == nil{
+            return false
+        }
+        return true
+    }
+    
     private func AddStock(){
         // There's No subject same schedule at the same Term
-//        if let term = term{
-//            var term1Sub, term2Sub : TermSubSegment
-//
-//            switch(term.subSegment){
-//            case TermSubSegment.Full.rawValue:
-//                term1Sub = .First
-//                term2Sub = .Second
-//            case TermSubSegment.First.rawValue:
-//                term1Sub = .First
-//                term2Sub = .Full
-//            case TermSubSegment.Second.rawValue:
-//                term1Sub = .Second
-//                term2Sub = .Full
-//            default:
-//                return
-//            }
-//
-//            let termSubjects = subjectList.filter{
-//                $0.term!.year == term.year &&
-//                                       $0.term!.segment == term.segment && ($0.term!.subSegment == term1Sub.rawValue || $0.term!.subSegment == term2Sub.rawValue)
-//            }
-//
-//            if termSubjects.where({$0.day == weekDay
-//                                    && $0.time == time}).count == 0{
-                stock.append(ScheduleStock(weekDay:weekDay,time:time))
-//            }
-//        }
+        if let term = term{
+            var subjects = realm.objects(SubjectItem.self).where({
+                $0.term.year == term.year &&
+                $0.term.segment == term.segment
+            })
+
+            switch(term.subSegment){
+            case TermSubSegment.First.rawValue:
+                fallthrough
+            case TermSubSegment.Second.rawValue:
+                subjects = subjects.where({
+                    $0.term.subSegment == term.subSegment ||
+                    $0.term.subSegment == TermSubSegment.Full.rawValue
+                })
+            default:
+                break
+            }
+            
+            if subjects.where({
+                $0.day == weekDay && $0.time == time
+            }).count == 0 {
+                stock.append(ScheduleStock(weekDay: weekDay, time: time))
+            }
+        }
     }
     
     private func AddSubject(){
@@ -233,7 +234,9 @@ struct NewSubjectView: View {
                                              "day": scheduleItem.weekDay,
                                              "time": scheduleItem.time,
                                              "memo": memo])
-            $subjectList.append(subject)
+            try! realm.write{
+                realm.add(subject)
+            }
             AddSchedulesFromSubject(subject)
         }
 
@@ -260,8 +263,9 @@ struct NewSubjectView: View {
                                                     "date":date.date,
                                                     "room":subject.room,
                                                     "time":subject.time])
-            
-            $scheduleList.append(scheduleItem)
+            try! realm.write{
+                realm.add(scheduleItem)
+            }
             
             let _ = date.incrementWeek()
             while date.isHoliday { let _ = date.incrementWeek() }

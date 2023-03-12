@@ -8,6 +8,6 @@
 import Foundation
 
 struct TermDefinition{
-    static let HALF_TERM_WEEKS = 7
-    static let FULL_TERM_WEEKS = 14
+    static let HALF_TERM_WEEKS = 8
+    static let FULL_TERM_WEEKS = 16
 }

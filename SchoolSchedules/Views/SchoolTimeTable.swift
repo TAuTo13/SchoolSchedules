@@ -15,7 +15,7 @@ struct SchoolClass{
 struct SchoolTimeTable: View {
     @State private var week : WeekStruct = DateHelper().getWeekNow()
     
-    @ObservedResults(ScheduleItem.self) private var scheduleList
+    @Environment(\.realm) private var realm: Realm
     
     private let margin:CGFloat = 5
     private let headerSizeXRatio = 0.9
@@ -139,7 +139,7 @@ struct SchoolTimeTable: View {
     func SetSubjectSchedule(weekday: Int, time: Int) throws -> some View{
         do{
             let date: Date = try week.getDayOfWeek(weekday: weekday)
-            let schedules = scheduleList.where({$0.date == date && $0.time == time})
+            let schedules = realm.objects(ScheduleItem.self).where({$0.date == date && $0.time == time})
             
             if let schedule = schedules.first {
                 return ClassCard(subjectItem: schedule.subjectItem)
