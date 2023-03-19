@@ -8,21 +8,22 @@
 import SwiftUI
 import RealmSwift
 
-struct ScheduleStock: Identifiable{
-    var id = UUID()
+struct ScheduleStock: Identifiable {
+    let id = UUID()
     var weekDay : Int
     var time : Int
 }
 
 struct NewSubjectView: View {
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.realm) private var realm: Realm
+    
+    @EnvironmentObject private var store: DbStore
     
     //for SubjectItems
     @State private var subjectName : String = ""
     @State private var room : String = ""
     @State private var teacher: String = ""
-    @State private var weekDay: Int = 2
+    @State private var weekday: Int = 2
     @State private var time: Int = 1
     @State private var term: Term? = nil
     @State private var color: Color = Color.blue
@@ -31,6 +32,8 @@ struct NewSubjectView: View {
      
     //for checking form state
     @State private var isCompleted = false
+    
+    @State private var errorForAlert: ErrorMessage?
     
     var body: some View {
         NavigationStack {
@@ -104,7 +107,7 @@ struct NewSubjectView: View {
                             .foregroundColor(.red)
                     }
                     
-                    Picker(selection: $weekDay, label: Text("WeekDay")){
+                    Picker(selection: $weekday, label: Text("WeekDay")){
                         Text("Monday").tag(2)
                         Text("Tuesday").tag(3)
                         Text("Wednesday").tag(4)
@@ -141,6 +144,9 @@ struct NewSubjectView: View {
                     Text("Finish")
                 }.disabled(!SubjectFullfilled())
             }
+        }
+        .alert(item: $errorForAlert){ error in
+            Alert(title: Text(error.title),message: Text(error.message), dismissButton: .default(Text("OK")))
         }
     }
     
@@ -189,7 +195,7 @@ struct NewSubjectView: View {
     }
 
     private func StockAppendable() -> Bool{
-        if stock.contains(where: {$0.weekDay == weekDay && $0.time == time})
+        if stock.contains(where: {$0.weekDay == weekday && $0.time == time})
             || term == nil{
             return false
         }
@@ -199,28 +205,11 @@ struct NewSubjectView: View {
     private func AddStock(){
         // There's No subject same schedule at the same Term
         if let term = term{
-            var subjects = realm.objects(SubjectItem.self).where({
-                $0.term.year == term.year &&
-                $0.term.segment == term.segment
-            })
-
-            switch(term.subSegment){
-            case TermSubSegment.First.rawValue:
-                fallthrough
-            case TermSubSegment.Second.rawValue:
-                subjects = subjects.where({
-                    $0.term.subSegment == term.subSegment ||
-                    $0.term.subSegment == TermSubSegment.Full.rawValue
-                })
-            default:
-                break
+            if store.checkSubjectCollisioning(weekday: weekday, time: time, term: term) {
+                return
             }
             
-            if subjects.where({
-                $0.day == weekDay && $0.time == time
-            }).count == 0 {
-                stock.append(ScheduleStock(weekDay: weekDay, time: time))
-            }
+            stock.append(ScheduleStock(weekDay: weekday, time: time))
         }
     }
     
@@ -229,13 +218,17 @@ struct NewSubjectView: View {
             let subject = SubjectItem(value:["name": subjectName,
                                              "room": room,
                                              "teach": teacher,
-                                             "term": term!,
                                              "color":color.toHex()!,
-                                             "day": scheduleItem.weekDay,
+                                             "weekday": scheduleItem.weekDay,
                                              "time": scheduleItem.time,
                                              "memo": memo])
-            try! realm.write{
-                realm.add(subject)
+            do {
+                try store.addSubject(subject: subject,term: term!)
+            } catch DbException.CollisioningException(let description) {
+                errorForAlert = ErrorMessage(title: "CollisioningError",
+                                             message: description)
+            } catch {
+                errorForAlert = ErrorMessage(title: "RealmError", message: error.localizedDescription)
             }
             AddSchedulesFromSubject(subject)
         }
@@ -244,31 +237,31 @@ struct NewSubjectView: View {
     
     private func AddSchedulesFromSubject(_ subject: SubjectItem){
         let weekdays = 7
-        let term: Term = subject.term!
-        let weeks = subject.term!.subSegment == TermSubSegment.Full.rawValue ?
+        let term: Term = subject.term.first!
+        let weeks = subject.term.first!.subSegment == TermSubSegment.Full.rawValue ?
             TermDefinition.FULL_TERM_WEEKS : TermDefinition.HALF_TERM_WEEKS
         
         var date = try! DateStruct(date: term.startDate)
-        if subject.day > date.weekdayVal{
-            let _ = date.addDays(value: subject.day - date.weekdayVal)
-            while date.isHoliday { let _ = date.incrementWeek() }
+        if subject.weekday > date.weekdayVal{
+            try! date.addDays(value: subject.weekday - date.weekdayVal)
+            while date.isHoliday { try! date.incrementWeek() }
         }else{
-            let _ = date.addDays(value: weekdays - date.weekdayVal + subject.day)
-            while date.isHoliday { let _ =  date.incrementWeek() }
+            try! date.addDays(value: weekdays - date.weekdayVal + subject.weekday)
+            while date.isHoliday { try! date.incrementWeek() }
         }
         
         for _ in 0..<weeks{
-            let scheduleItem = ScheduleItem(value: ["subjectItem":subject,
-                                                    "term": term,
+            let scheduleItem = ScheduleItem(value: ["term": term,
                                                     "date":date.date,
                                                     "room":subject.room,
                                                     "time":subject.time])
-            try! realm.write{
-                realm.add(scheduleItem)
+            do {
+                try store.addSchedule(schedule: scheduleItem, subject: subject)
+            } catch {
+                errorForAlert = ErrorMessage(title: "RealmError", message: error.localizedDescription)
             }
-            
-            let _ = date.incrementWeek()
-            while date.isHoliday { let _ = date.incrementWeek() }
+            try! date.incrementWeek()
+            while date.isHoliday { try! date.incrementWeek() }
         }
     }
 }

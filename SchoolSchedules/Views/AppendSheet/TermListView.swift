@@ -13,29 +13,27 @@ struct TermListView: View {
     
     @Environment(\.dismiss) private var dismiss
     
-    @Environment(\.realm) private var realm: Realm
+    @EnvironmentObject private var store: DbStore
+    
+    @ObservedResults(Term.self) private var termList
     
     @State private var selectedTerm: Term? = nil
     
-    @State private var termSelected = false
-    
     @State private var deleteActionSheet = false
+    
+    @State private var errorForAlert: ErrorMessage?
     
     var body: some View {
         NavigationStack{
-            if let termList = realm.objects(Term.self){
-                List(selection: $selectedTerm){
-                    ForEach(termList, id: \.self){ t in
+            List(selection: $selectedTerm){
+                ForEach(termList, id: \.self){ t in
+                    if t.isInvalidated {
+                        EmptyView()
+                    }else{
                         Text("\(t.year) \(t.segment) \(t.subSegment)")
                     }
                 }
-                .onChange(of: selectedTerm){ _ in
-                    termSelected = true
-                }
-            }else{
-                Text("No Terms found.")
             }
-            
         }
         .navigationTitle("Term List")
             .navigationBarTitleDisplayMode(.inline)
@@ -48,7 +46,7 @@ struct TermListView: View {
                     }label: {
                         Text("Select")
                     }
-                    .disabled(!termSelected)
+                    .disabled(!termSelected())
 
                 }
                 ToolbarItem(placement: .bottomBar){
@@ -58,7 +56,7 @@ struct TermListView: View {
                         }label:{
                             Image(systemName: "trash")
                         }
-                        .disabled(!termSelected)
+                        .disabled(!termSelected())
                         .actionSheet(isPresented: $deleteActionSheet){
                             ActionSheet(title: Text("Do you want to delete?"),buttons: [
                                 .destructive(Text("Delete")){
@@ -70,25 +68,33 @@ struct TermListView: View {
 
                         NavigationLink(destination: AddTermView(itemToEdit: selectedTerm),
                                        label: {Image(systemName: "pencil")})
-                        .disabled(!termSelected)
+                        .disabled(!termSelected())
 
                         NavigationLink(destination: AddTermView(), label: {Image(systemName: "plus")})
                     }
                 }
             }
+            .alert(item: $errorForAlert) { error in
+                Alert(title: Text(error.title),message: Text(error.message), dismissButton: .default(Text("OK")))
+            }
     }
     
     private func deleteTerm(){
-        let subjects = realm.objects(SubjectItem.self).where({$0.term.id == selectedTerm!.id})
-
-        if subjects.count == 0 {
-            try! realm.write{
-                realm.delete(selectedTerm!)
-            }
-            
-            selectedTerm = nil
-            termSelected = false
+        do {
+            try store.deleteTerm(selectedTerm!)
+        } catch DbException.TermModifyLockException(let description) {
+            errorForAlert = ErrorMessage(title: "ModifyLockError", message: description)
+        } catch {
+            errorForAlert = ErrorMessage(title: "RealmError", message: error.localizedDescription)
         }
+        selectedTerm = nil
+    }
+    
+    private func termSelected() -> Bool {
+        if let _ = selectedTerm {
+            return true
+        }
+        return false
     }
 }
 
