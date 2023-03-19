@@ -11,7 +11,7 @@ import RealmSwift
 struct AddTermView: View {
     @Environment(\.dismiss) private var dismiss
     
-    @Environment(\.realm) private var realm: Realm
+    @EnvironmentObject private var store: DbStore
     
     private let current_year: Int = DateHelper().getYearNow()
     
@@ -22,6 +22,8 @@ struct AddTermView: View {
     @State private var termSegment: TermSegment = .Front
     @State private var termSubSegment: TermSubSegment = .Full
     @State private var startDate: Date = Calendar.current.date(from: DateComponents(year: DateHelper().getYearNow(), month: 4, day: 1))!
+    
+    @State private var errorForAlert: ErrorMessage?
     
     init(itemToEdit: Term? = nil){
         self.itemToEdit = itemToEdit
@@ -88,6 +90,10 @@ struct AddTermView: View {
                     .disabled(!TermFullfilled())
                 }
             }
+        
+        .alert(item: $errorForAlert) { error in
+            Alert(title: Text(error.title),message: Text(error.message), dismissButton: .default(Text("OK")))
+        }
     }
     
     private func onSelectionChanged(){
@@ -108,28 +114,32 @@ struct AddTermView: View {
     }
     
     private func UpdateTerm() {
-        if let itemToEdit = itemToEdit {
-            guard let objToUpdate = realm.object(ofType: Term.self, forPrimaryKey: itemToEdit.id)
-            else { return }
-            try! realm.write{
-                objToUpdate.year = year
-                objToUpdate.segment = termSegment.rawValue
-                objToUpdate.subSegment = termSubSegment.rawValue
-                objToUpdate.startDate = startDate
-            }
+        let term = Term(value: ["year": year,
+                                "segment": termSegment,
+                                "subSegment": termSubSegment,
+                                "startDate": startDate])
+        do {
+            try store.updateTerm(term)
+        } catch DbException.TermModifyLockException(let description){
+            errorForAlert = ErrorMessage(title: "ModifyLockError", message: description)
+        } catch DbException.CollisioningException(let description) {
+            errorForAlert = ErrorMessage(title: "CollisioningError", message: description)
+        } catch {
+            errorForAlert = ErrorMessage(title: "RealmError", message: error.localizedDescription)
         }
     }
     
     private func AddTerm(){
-        if realm.objects(Term.self).where({$0.year == year && $0.segment == termSegment.rawValue
-            && $0.subSegment == termSubSegment.rawValue}).count == 0{
-            let term = Term(value: ["year": year,
-                                    "segment": termSegment.rawValue,
-                                    "subSegment": termSubSegment.rawValue,
-                                    "startDate": startDate])
-            try! realm.write{
-                realm.add(term)
-            }
+        let term = Term(value: ["year": year,
+                                "segment": termSegment.rawValue,
+                                "subSegment": termSubSegment.rawValue,
+                                "startDate": startDate])
+        do {
+            try store.addTerm(term)
+        } catch DbException.CollisioningException(let description){
+            errorForAlert = ErrorMessage(title: "CollisioningException", message: description)
+        } catch {
+            errorForAlert = ErrorMessage(title: "RealmError", message: error.localizedDescription)
         }
     }
     

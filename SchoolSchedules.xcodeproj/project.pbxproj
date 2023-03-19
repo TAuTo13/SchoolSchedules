@@ -7,10 +7,17 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */; };
+		46B3797207C14CCD17135495 /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78ADD70B9C6DAD42009652EE /* Pods_SchoolSchedules.framework */; };
+		F642B19A29C6CE980043295C /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F642B19929C6CE980043295C /* Pods_SchoolSchedules.framework */; };
+		F64DD39E29C552D400163984 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64DD39D29C552D400163984 /* Realm.framework */; };
+		F64DD3A029C5538D00163984 /* Pods_SchoolSchedules.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64DD39F29C5538D00163984 /* Pods_SchoolSchedules.framework */; };
+		F64DD3A829C5EFAA00163984 /* DbException.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DD3A729C5EFAA00163984 /* DbException.swift */; };
+		F64DD3AA29C6C6FD00163984 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64DD3A929C6C6FD00163984 /* ErrorMessage.swift */; };
+		F64DD3B629C6CD5700163984 /* realm-monorepo.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = F64DD3AB29C6CB4200163984 /* realm-monorepo.xcframework */; settings = {ATTRIBUTES = (Required, ); }; };
 		F69A821C29B86ABF00D5AE19 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */; };
 		F69A822029B9CAA000D5AE19 /* TermDefinition.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */; };
 		F69A822629BA250000D5AE19 /* Migrator.swift in Sources */ = {isa = PBXBuildFile; fileRef = F69A822529BA250000D5AE19 /* Migrator.swift */; };
+		F6ABE36429C06ACD0087D2EF /* DbStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6ABE36329C06ACD0087D2EF /* DbStore.swift */; };
 		F69A823629BDD24900D5AE19 /* SchoolScheduleApp_AddSubjectView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823329BDD24800D5AE19 /* SchoolScheduleApp_AddSubjectView.png */; };
 		F69A823729BDD24900D5AE19 /* SchoolScheduleApp_MainView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823429BDD24900D5AE19 /* SchoolScheduleApp_MainView.png */; };
 		F69A823829BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png in Resources */ = {isa = PBXBuildFile; fileRef = F69A823529BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png */; };
@@ -56,11 +63,30 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.release.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.release.xcconfig"; sourceTree = "<group>"; };
+		78ADD70B9C6DAD42009652EE /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		89BF7F5B7FEAB8DDC04E15A6 /* Pods-SchoolSchedules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.release.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.release.xcconfig"; sourceTree = "<group>"; };
+		ABFEDA5D06E07A819B45850A /* Pods-SchoolSchedules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.debug.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.debug.xcconfig"; sourceTree = "<group>"; };
+		F642B19929C6CE980043295C /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD39729C5507300163984 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD39929C5511800163984 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD39B29C5523100163984 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD39D29C552D400163984 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD39F29C5538D00163984 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3A129C554C300163984 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3A329C564F600163984 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3A729C5EFAA00163984 /* DbException.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbException.swift; sourceTree = "<group>"; };
+		F64DD3A929C6C6FD00163984 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
+		F64DD3AB29C6CB4200163984 /* realm-monorepo.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = "realm-monorepo.xcframework"; path = "Pods/Realm/core/realm-monorepo.xcframework"; sourceTree = "<group>"; };
+		F64DD3AD29C6CB5100163984 /* Pods_SchoolSchedules.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pods_SchoolSchedules.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3B029C6CBA100163984 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3B229C6CBB300163984 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3B429C6CCC900163984 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		F64DD3B729C6CD6D00163984 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69A821B29B86ABF00D5AE19 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		F69A821F29B9CA9F00D5AE19 /* TermDefinition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermDefinition.swift; sourceTree = "<group>"; };
 		F69A822529BA250000D5AE19 /* Migrator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Migrator.swift; sourceTree = "<group>"; };
+		F6ABE36329C06ACD0087D2EF /* DbStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStore.swift; sourceTree = "<group>"; };
+		F6ABE36529C54AC70087D2EF /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		F69A823329BDD24800D5AE19 /* SchoolScheduleApp_AddSubjectView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_AddSubjectView.png; sourceTree = "<group>"; };
 		F69A823429BDD24900D5AE19 /* SchoolScheduleApp_MainView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_MainView.png; sourceTree = "<group>"; };
 		F69A823529BDD24900D5AE19 /* SchoolScheduleApp_TermsView.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SchoolScheduleApp_TermsView.png; sourceTree = "<group>"; };
@@ -89,7 +115,6 @@
 		F6E7249429A891FE00C5A031 /* TermSegmentEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermSegmentEnum.swift; sourceTree = "<group>"; };
 		F6E7249929B565B000C5A031 /* AddTermView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddTermView.swift; sourceTree = "<group>"; };
 		F6E7249B29B59AC900C5A031 /* TermListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TermListView.swift; sourceTree = "<group>"; };
-		FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SchoolSchedules.debug.xcconfig"; path = "Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF8727DE883D7C45112E3AEA /* Pods_SchoolSchedules.framework in Frameworks */,
+				46B3797207C14CCD17135495 /* Pods_SchoolSchedules.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +130,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F64DD3A029C5538D00163984 /* Pods_SchoolSchedules.framework in Frameworks */,
+				F64DD39E29C552D400163984 /* Realm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,6 +139,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F642B19A29C6CE980043295C /* Pods_SchoolSchedules.framework in Frameworks */,
+				F64DD3B629C6CD5700163984 /* realm-monorepo.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -121,8 +150,8 @@
 		27F32EA9A16D9D7E3B033D3A /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */,
-				70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */,
+				ABFEDA5D06E07A819B45850A /* Pods-SchoolSchedules.debug.xcconfig */,
+				89BF7F5B7FEAB8DDC04E15A6 /* Pods-SchoolSchedules.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -130,7 +159,22 @@
 		E734F89930187F122027AD8B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				360ED6A23EFCD107248FF690 /* Pods_SchoolSchedules.framework */,
+				F642B19929C6CE980043295C /* Pods_SchoolSchedules.framework */,
+				F64DD3B729C6CD6D00163984 /* Realm.framework */,
+				F64DD3B429C6CCC900163984 /* RealmSwift.framework */,
+				F64DD3B229C6CBB300163984 /* RealmSwift.framework */,
+				F64DD3B029C6CBA100163984 /* Realm.framework */,
+				F64DD3AD29C6CB5100163984 /* Pods_SchoolSchedules.framework */,
+				F64DD3AB29C6CB4200163984 /* realm-monorepo.xcframework */,
+				F64DD3A329C564F600163984 /* RealmSwift.framework */,
+				F64DD3A129C554C300163984 /* Realm.framework */,
+				F64DD39F29C5538D00163984 /* Pods_SchoolSchedules.framework */,
+				F64DD39D29C552D400163984 /* Realm.framework */,
+				F64DD39B29C5523100163984 /* RealmSwift.framework */,
+				F64DD39929C5511800163984 /* Pods_SchoolSchedules.framework */,
+				F64DD39729C5507300163984 /* Realm.framework */,
+				F6ABE36529C54AC70087D2EF /* Realm.framework */,
+				78ADD70B9C6DAD42009652EE /* Pods_SchoolSchedules.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -141,6 +185,7 @@
 				F6BC941E29860E4300008BAE /* SubjectItem.swift */,
 				F6E7248E29A4795000C5A031 /* Term.swift */,
 				F6E7249229A47B5000C5A031 /* ScheduleItem.swift */,
+				F6ABE36329C06ACD0087D2EF /* DbStore.swift */,
 			);
 			path = DataBase;
 			sourceTree = "<group>";
@@ -270,6 +315,7 @@
 			isa = PBXGroup;
 			children = (
 				F6BC706F29869D2F00423614 /* DateException.swift */,
+				F64DD3A729C5EFAA00163984 /* DbException.swift */,
 			);
 			path = Exceptions;
 			sourceTree = "<group>";
@@ -280,6 +326,7 @@
 				F6BC707229869E0000423614 /* DateStruct.swift */,
 				F6BC70742986B37B00423614 /* WeekStruct.swift */,
 				F6E7249429A891FE00C5A031 /* TermSegmentEnum.swift */,
+				F64DD3A929C6C6FD00163984 /* ErrorMessage.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -301,11 +348,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6AEEA282977977800EE60A6 /* Build configuration list for PBXNativeTarget "SchoolSchedules" */;
 			buildPhases = (
-				71112FF68CD9232FAB50457E /* [CP] Check Pods Manifest.lock */,
+				B4EF3215E87E938770ED08E2 /* [CP] Check Pods Manifest.lock */,
 				F6AEEA002977977700EE60A6 /* Sources */,
 				F6AEEA012977977700EE60A6 /* Frameworks */,
 				F6AEEA022977977700EE60A6 /* Resources */,
-				4BD864E6011442EEE3FD61CE /* [CP] Embed Pods Frameworks */,
+				65818EA717CEE8005312C12E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -425,7 +472,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4BD864E6011442EEE3FD61CE /* [CP] Embed Pods Frameworks */ = {
+		65818EA717CEE8005312C12E /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -442,7 +489,7 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SchoolSchedules/Pods-SchoolSchedules-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		71112FF68CD9232FAB50457E /* [CP] Check Pods Manifest.lock */ = {
+		B4EF3215E87E938770ED08E2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -481,8 +528,10 @@
 				F6AEEA082977977700EE60A6 /* SchoolSchedulesApp.swift in Sources */,
 				F6BC707E299775A100423614 /* ClassSpace.swift in Sources */,
 				F6BC7077299256D500423614 /* NewSubjectView.swift in Sources */,
+				F64DD3AA29C6C6FD00163984 /* ErrorMessage.swift in Sources */,
 				F69A822029B9CAA000D5AE19 /* TermDefinition.swift in Sources */,
 				F6BC941F29860E4300008BAE /* SubjectItem.swift in Sources */,
+				F6ABE36429C06ACD0087D2EF /* DbStore.swift in Sources */,
 				F6BC942529866ED300008BAE /* DateHelper.swift in Sources */,
 				F6E7249A29B565B000C5A031 /* AddTermView.swift in Sources */,
 				F6BC707029869D2F00423614 /* DateException.swift in Sources */,
@@ -491,6 +540,7 @@
 				F6AEEA3529782B6000EE60A6 /* ClassCard.swift in Sources */,
 				F6B0146729A228B800C95438 /* AppendButton.swift in Sources */,
 				F6AEEA33297798B000EE60A6 /* SchoolTimeTable.swift in Sources */,
+				F64DD3A829C5EFAA00163984 /* DbException.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -645,7 +695,7 @@
 		};
 		F6AEEA292977977800EE60A6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FADF6B8BEF54CB5FB23C13BD /* Pods-SchoolSchedules.debug.xcconfig */;
+			baseConfigurationReference = ABFEDA5D06E07A819B45850A /* Pods-SchoolSchedules.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -679,7 +729,7 @@
 		};
 		F6AEEA2A2977977800EE60A6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 70C3F3E367475F5A6B34A2D7 /* Pods-SchoolSchedules.release.xcconfig */;
+			baseConfigurationReference = 89BF7F5B7FEAB8DDC04E15A6 /* Pods-SchoolSchedules.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

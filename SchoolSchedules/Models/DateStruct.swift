@@ -50,41 +50,57 @@ struct DateStruct {
         isHoliday = HolidayJp.isHoliday(date, calendar: calendar)
     }
     
-    mutating func update() -> Bool {
+    mutating func update() throws {
         let cp = calendar.dateComponents([.year, .month, .day, .weekday, .weekOfYear], from: date)
         
-        guard let year = cp.year else { return false }
+        guard let year = cp.year else {
+            throw DateException.NotFoundException
+        }
         self.year = year
         
-        guard let month = cp.month else { return false }
+        guard let month = cp.month else {
+            throw DateException.NotFoundException
+        }
         self.month = formatter.shortMonthSymbols[month-1]
         
-        guard let day = cp.day else { return false }
+        guard let day = cp.day else {
+            throw DateException.NotFoundException
+        }
         self.day = day
         
-        guard let weekday = cp.weekday else { return false }
+        guard let weekday = cp.weekday else {
+            throw DateException.NotFoundException
+        }
         self.weekday = formatter.shortWeekdaySymbols[weekday-1]
         
-        guard let weekOfYear = cp.weekOfYear else { return false }
+        guard let weekOfYear = cp.weekOfYear else {
+            throw DateException.NotFoundException
+        }
         self.weekOfYear = weekOfYear
         
         isHoliday = HolidayJp.isHoliday(date, calendar: calendar)
-        
-        return true
     }
     
-    mutating func addDays(value:Int) -> Bool{
+    mutating func addDays(value:Int) throws {
         guard let resultDate = calendar.date(byAdding: .day, value: value, to: self.date)
         else{
-            return false
+            throw DateException.NotFoundException
         }
         
         self.date = resultDate
         
-        return update()
+        do {
+            try update()
+        } catch {
+            throw error
+        }
     }
     
-    mutating func incrementWeek() -> Bool{
-        return addDays(value: 7)
+    mutating func incrementWeek() throws {
+        do {
+            try addDays(value: 7)
+        } catch {
+            throw error
+        }
     }
 }

@@ -19,6 +19,8 @@ final class Term:Object,ObjectKeyIdentifiable{
     
     @Persisted var startDate: Date
     
+    @Persisted var subjects = RealmSwift.List<SubjectItem>()
+    
     static func == (left: Term, right: Term) -> Bool{
         return left.year == right.year &&
         left.segment == right.segment &&
