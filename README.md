@@ -10,8 +10,6 @@
 <img src="Images/SchoolScheduleApp_TermsView.png" width="320px">
 
 ## 現在の問題
-* 学期(Term)の削除が反映されない
-* 学期(Term)の削除の確認ダイアログの表示二度目でクラッシュする
 
 ## 今後実装予定の機能
 * 講義科目の詳細表示
