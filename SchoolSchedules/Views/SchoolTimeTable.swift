@@ -80,7 +80,7 @@ struct SchoolTimeTable: View {
                                     //day
                                     Text("\(date.day)")
                                         .font(.title2)
-                                        .foregroundColor(date.isHoliday ? Color.red : Color.black)
+                                        .foregroundColor(date.isHoliday ? Color(UIColor.systemRed) : Color(UIColor.label))
                                 }
                                 .frame(width: daySpaceWidth,
                                        height: headerHeight * headerDaysYRatio)
