@@ -26,6 +26,7 @@ struct NewSubjectView: View {
     @State private var weekday: Int = 2
     @State private var time: Int = 1
     @State private var term: Term? = nil
+    @State private var termSubSegment = TermSubSegment.Full
     @State private var color: Color = Color.blue
     @State private var memo: String = ""
     @State private var stock = [ScheduleStock]()
@@ -73,8 +74,7 @@ struct NewSubjectView: View {
                         if let term = term{
                             let year =  "\(term.year)"
                             let segment = term.segment
-                            let subSegment = term.subSegment
-                            Text("Term  \(year) \(segment) \(subSegment)")
+                            Text("Term  \(year) \(segment)")
                         }else{
                             HStack{
                                 Text("Term")
@@ -84,6 +84,13 @@ struct NewSubjectView: View {
                             }
                         }
                     }
+                    
+                    Picker(selection: $termSubSegment ,label: Text("SubSegment")){
+                        Text("1st").tag(TermSubSegment.First)
+                        Text("2nd").tag(TermSubSegment.Second)
+                        Text("Full").tag(TermSubSegment.Full)
+                    }
+                    .pickerStyle(.segmented)
                     
                     ColorPicker("Color", selection: $color)
                     
@@ -111,7 +118,7 @@ struct NewSubjectView: View {
                         Text("Monday").tag(2)
                         Text("Tuesday").tag(3)
                         Text("Wednesday").tag(4)
-                        Text("Thrusday").tag(5)
+                        Text("Thursday").tag(5)
                         Text("Friday").tag(6)
                     }
                     
@@ -205,7 +212,7 @@ struct NewSubjectView: View {
     private func AddStock(){
         // There's No subject same schedule at the same Term
         if let term = term{
-            if store.checkSubjectCollisioning(weekday: weekday, time: time, term: term) {
+            if store.checkSubjectCollisioning(weekday: weekday, time: time, subSegment: termSubSegment.rawValue, term: term) {
                 return
             }
             
@@ -218,10 +225,11 @@ struct NewSubjectView: View {
             let subject = SubjectItem(value:["name": subjectName,
                                              "room": room,
                                              "teach": teacher,
-                                             "color":color.toHex()!,
+                                             "color": color.toHex()!,
+                                             "subSegment": termSubSegment.rawValue,
                                              "weekday": scheduleItem.weekDay,
                                              "time": scheduleItem.time,
-                                             "memo": memo])
+                                             "memo": memo] as [String : Any])
             do {
                 try store.addSubject(subject: subject,term: term!)
             } catch DbException.CollisioningException(let description) {
@@ -238,23 +246,31 @@ struct NewSubjectView: View {
     private func AddSchedulesFromSubject(_ subject: SubjectItem){
         let weekdays = 7
         let term: Term = subject.term.first!
-        let weeks = subject.term.first!.subSegment == TermSubSegment.Full.rawValue ?
+        let weeks = subject.subSegment == TermSubSegment.Full.rawValue ?
             TermDefinition.FULL_TERM_WEEKS : TermDefinition.HALF_TERM_WEEKS
         
         var date = try! DateStruct(date: term.startDate)
-        if subject.weekday > date.weekdayVal{
+        
+        if subject.weekday > date.weekdayVal {
             try! date.addDays(value: subject.weekday - date.weekdayVal)
             while date.isHoliday { try! date.incrementWeek() }
-        }else{
+        }else if subject.weekday < date.weekdayVal {
             try! date.addDays(value: weekdays - date.weekdayVal + subject.weekday)
             while date.isHoliday { try! date.incrementWeek() }
         }
         
+        if subject.subSegment == TermSubSegment.Second.rawValue {
+            for _ in 0..<weeks{
+                try! date.incrementWeek()
+                while date.isHoliday { try! date.incrementWeek() }
+            }
+        }
+        
         for _ in 0..<weeks{
             let scheduleItem = ScheduleItem(value: ["term": term,
-                                                    "date":date.date,
-                                                    "room":subject.room,
-                                                    "time":subject.time])
+                                                    "date": date.date,
+                                                    "room": subject.room,
+                                                    "time": subject.time] as [String : Any])
             do {
                 try store.addSchedule(schedule: scheduleItem, subject: subject)
             } catch {
@@ -273,7 +289,7 @@ struct StockRow: View{
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "en_US")
         return Label(
-            title: {Text("\(formatter.weekdaySymbols[scheduleItem.weekDay]) \(scheduleItem.time)")},
+            title: {Text("\(formatter.weekdaySymbols[scheduleItem.weekDay - 1]) \(scheduleItem.time)")},
             icon: {Image(systemName: "calendar")}
         )
     }

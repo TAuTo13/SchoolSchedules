@@ -20,7 +20,6 @@ struct AddTermView: View {
     //for Terms
     @State private var year: Int = DateHelper().getYearNow()
     @State private var termSegment: TermSegment = .Front
-    @State private var termSubSegment: TermSubSegment = .Full
     @State private var startDate: Date = Calendar.current.date(from: DateComponents(year: DateHelper().getYearNow(), month: 4, day: 1))!
     
     @State private var errorForAlert: ErrorMessage?
@@ -30,7 +29,6 @@ struct AddTermView: View {
         if let itemToEdit = itemToEdit {
             _year = State(initialValue: itemToEdit.year)
             _termSegment = State(initialValue: TermSegment(rawValue: itemToEdit.segment)!)
-            _termSubSegment = State(initialValue: TermSubSegment(rawValue: itemToEdit.subSegment)!)
             _startDate = State(initialValue: itemToEdit.startDate)
         }
     }
@@ -54,16 +52,6 @@ struct AddTermView: View {
                     }
                     .pickerStyle(.segmented)
                     .onChange(of: termSegment){ _ in
-                        onSelectionChanged()
-                    }
-                    
-                    Picker(selection: $termSubSegment ,label: Text("SubSegment")){
-                        Text("1st").tag(TermSubSegment.First)
-                        Text("2nd").tag(TermSubSegment.Second)
-                        Text("Full").tag(TermSubSegment.Full)
-                    }
-                    .pickerStyle(.segmented)
-                    .onChange(of: termSubSegment){ _ in
                         onSelectionChanged()
                     }
                     
@@ -116,8 +104,7 @@ struct AddTermView: View {
     private func UpdateTerm() {
         let term = Term(value: ["year": year,
                                 "segment": termSegment,
-                                "subSegment": termSubSegment,
-                                "startDate": startDate])
+                                "startDate": startDate] as [String : Any])
         do {
             try store.updateTerm(term)
         } catch DbException.TermModifyLockException(let description){
@@ -132,8 +119,7 @@ struct AddTermView: View {
     private func AddTerm(){
         let term = Term(value: ["year": year,
                                 "segment": termSegment.rawValue,
-                                "subSegment": termSubSegment.rawValue,
-                                "startDate": startDate])
+                                "startDate": startDate] as [String : Any])
         do {
             try store.addTerm(term)
         } catch DbException.CollisioningException(let description){

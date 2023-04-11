@@ -21,6 +21,14 @@ class Migrator {
                     let id = oldObject!["_id"]! as! ObjectId
                     newObject!["id"] = id
                 }
+            }else if oldSchemaVersion < 3 {
+                migration.enumerateObjects(ofType: SubjectItem.className()){ oldObject, newObject in
+                    let terms = oldObject!["term"]! as! LinkingObjects<Term>
+                    let term = terms.first! as Term
+                    let subSegment = term["subSegment"]
+                    
+                    newObject!["subSegment"] = subSegment
+                }
             }
         })
         
