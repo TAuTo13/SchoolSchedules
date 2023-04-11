@@ -15,15 +15,12 @@ final class Term:Object,ObjectKeyIdentifiable{
     
     @Persisted var segment: String
     
-    @Persisted var subSegment: String
-    
     @Persisted var startDate: Date
     
     @Persisted var subjects = RealmSwift.List<SubjectItem>()
     
     static func == (left: Term, right: Term) -> Bool{
         return left.year == right.year &&
-        left.segment == right.segment &&
-        left.subSegment == right.subSegment
+        left.segment == right.segment
     }
 }
