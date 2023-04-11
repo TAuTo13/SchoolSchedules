@@ -30,7 +30,7 @@ struct TermListView: View {
                     if t.isInvalidated {
                         EmptyView()
                     }else{
-                        Text("\(t.year) \(t.segment) \(t.subSegment)")
+                        Text("\(t.year) \(t.segment)")
                     }
                 }
             }

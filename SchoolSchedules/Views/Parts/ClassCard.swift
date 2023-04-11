@@ -46,7 +46,7 @@ struct ClassCard_Previews: PreviewProvider {
                                      "day": 3,
                                             "color":Color.blue.toHex()!,
                                      "time": 2,
-                                     "memo": "memo"])
+                                                          "memo": "memo"] as [String : Any])
     static var previews: some View {
         ClassCard(subjectItem: subject)
 //        ClassCard()

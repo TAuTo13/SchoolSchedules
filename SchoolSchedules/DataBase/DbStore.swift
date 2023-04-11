@@ -49,14 +49,18 @@ class DbStore: ObservableObject {
     }
     
     func addSubject(subject: SubjectItem, term: Term) throws {
-        if checkSubjectCollisioning(weekday: subject.weekday, time: subject.time, term: term) {
+        if checkSubjectCollisioning(weekday: subject.weekday, time: subject.time, subSegment: subject.subSegment, term: term) {
             throw DbException.CollisioningException("The subject is collisioning with the other subject.")
         }
+        
+        let oldTerm = TermEntities.where {
+            $0.id == term.id
+        }.first!
         
         do {
             try realm.write {
                 realm.add(subject)
-                term.subjects.append(subject)
+                oldTerm.subjects.append(subject)
             }
         } catch {
             throw error
@@ -117,7 +121,6 @@ class DbStore: ObservableObject {
                 try realm.write {
                     oldTerm.year = term.year
                     oldTerm.segment = term.segment
-                    oldTerm.subSegment = term.subSegment
                 }
             } catch {
                 throw error
@@ -190,34 +193,21 @@ class DbStore: ObservableObject {
         return false
     }
     
-    func checkSubjectCollisioning(weekday: Int, time: Int, term: Term) -> Bool {
-        var subjects = SubjectEntities.where({
+    func checkSubjectCollisioning(weekday: Int, time: Int, subSegment: String, term: Term) -> Bool {
+        let subjects = SubjectEntities.where({
             $0.term.year == term.year &&
             $0.term.segment == term.segment
         })
-
-        switch(term.subSegment){
-        case TermSubSegment.First.rawValue:
-            fallthrough
-        case TermSubSegment.Second.rawValue:
-            subjects = subjects.where({
-                $0.term.subSegment == term.subSegment ||
-                $0.term.subSegment == TermSubSegment.Full.rawValue
-            })
-        default:
-            break
-        }
         
         return subjects.where({
-            $0.weekday == weekday && $0.time == time
+            $0.weekday == weekday && $0.time == time && $0.subSegment == subSegment
         }).count != 0
     }
     
     func checkTermCollisioning(_ term: Term) -> Bool {
         let terms = TermEntities.where{
             $0.year == term.year &&
-            $0.segment == term.segment &&
-            $0.subSegment == term.subSegment
+            $0.segment == term.segment
         }
         
         return terms.count != 0

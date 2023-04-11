@@ -26,6 +26,8 @@ final class SubjectItem: Object, ObjectKeyIdentifiable{
     //1~6 time
     @Persisted var time: Int
     
+    @Persisted var subSegment: String
+    
     @Persisted var memo: String
     
     @Persisted(originProperty: "subjects") var term: LinkingObjects<Term>

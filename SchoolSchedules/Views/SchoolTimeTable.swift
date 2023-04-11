@@ -22,14 +22,6 @@ struct SchoolTimeTable: View {
     private let headerSizeYRatio = 0.1
     private let headerYearYRatio = 0.35
     
-    let subject = SubjectItem(value:["name": "Math",
-                                     "room": "A-106",
-                                     "teach": "Mr.Kitazaki",
-                                     "weeks": 7,
-                                     "day": 3,
-                                     "time": 2,
-                                     "meme": "memo"])
-    
     func UICalenderView() -> some View{
         let sideMargin = margin * 2
         let headerDaysYRatio = 1 - headerYearYRatio
